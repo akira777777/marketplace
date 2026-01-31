@@ -19,7 +19,8 @@ export default defineConfig(({ mode }) => {
           input: {
             main: path.resolve(__dirname, 'index.html'),
           }
-        }
+        },
+        outDir: 'dist'
       },
       resolve: {
         alias: {
