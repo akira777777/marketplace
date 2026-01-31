@@ -11,7 +11,7 @@ test.describe('Game Marketplace Success Verification', () => {
     });
     
     // Navigate to the application
-    await page.goto('http://localhost:3006');
+    await page.goto('http://localhost:4173');
     await page.waitForLoadState('networkidle');
     
     // Verify page loads successfully
@@ -27,7 +27,7 @@ test.describe('Game Marketplace Success Verification', () => {
   });
 
   test('should display core UI components', async ({ page }) => {
-    await page.goto('http://localhost:3006');
+    await page.goto('http://localhost:4173');
     
     // Check for header/logo - logo text changes based on page
     const header = page.locator('header');
@@ -53,7 +53,7 @@ test.describe('Game Marketplace Success Verification', () => {
   });
 
   test('should verify responsive design works', async ({ page }) => {
-    await page.goto('http://localhost:3006');
+    await page.goto('http://localhost:4173');
     
     // Test mobile view
     await page.setViewportSize({ width: 375, height: 667 });
@@ -72,7 +72,7 @@ test.describe('Game Marketplace Success Verification', () => {
   });
 
   test('should verify interactive functionality', async ({ page }) => {
-    await page.goto('http://localhost:3006');
+    await page.goto('http://localhost:4173');
     
     // Test navigation buttons are clickable - ensure desktop view first
     await page.setViewportSize({ width: 1200, height: 800 });
@@ -107,7 +107,7 @@ test.describe('Game Marketplace Success Verification', () => {
       hasCriticalErrors = true;
     });
     
-    await page.goto('http://localhost:3006');
+    await page.goto('http://localhost:4173');
     await page.waitForLoadState('networkidle');
     
     // Log any errors for debugging
