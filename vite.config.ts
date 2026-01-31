@@ -22,6 +22,9 @@ export default defineConfig(({ mode }) => {
         },
         outDir: 'dist'
       },
+      esbuild: {
+        jsx: 'automatic'
+      },
       resolve: {
         alias: {
           '@': path.resolve(__dirname, '.'),
