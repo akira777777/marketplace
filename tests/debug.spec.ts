@@ -5,7 +5,7 @@ test('Debug page structure', async ({ page }) => {
   page.on('console', msg => console.log('Console:', msg.type(), msg.text()));
   page.on('pageerror', error => console.log('Page error:', error.message));
   
-  await page.goto('http://localhost:3006');
+  await page.goto('http://localhost:4173');
   
   // Wait for page to load
   await page.waitForLoadState('networkidle');
