@@ -5,7 +5,20 @@ export enum Page {
   CHECKOUT_SUCCESS = 'CHECKOUT_SUCCESS',
   INVENTORY = 'INVENTORY',
   GENERATOR = 'GENERATOR',
-  MARKET_INTEL = 'MARKET_INTEL'
+  MARKET_INTEL = 'MARKET_INTEL',
+  CATALOG = 'CATALOG'
+}
+
+export interface Review {
+  id: string;
+  productId: string;
+  userId: string;
+  userName: string;
+  rating: number;
+  title: string;
+  comment: string;
+  date: string;
+  helpfulCount: number;
 }
 
 export interface Product {
@@ -21,6 +34,9 @@ export interface Product {
   description?: string;
   float?: string;
   pattern?: number;
+  averageRating?: number;
+  totalReviews?: number;
+  reviews?: Review[];
 }
 
 export interface CartItem extends Product {

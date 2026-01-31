@@ -8,6 +8,7 @@ import { CheckoutSuccess } from './pages/CheckoutSuccess';
 import { Inventory } from './pages/Inventory';
 import { Generator } from './pages/Generator';
 import { MarketIntel } from './pages/MarketIntel';
+import { Catalog } from './pages/Catalog';
 import { CartProvider, useCart } from './context/CartContext';
 import { Page, Product } from './types';
 
@@ -52,6 +53,8 @@ const AppContent: React.FC = () => {
         return <Generator />;
       case Page.MARKET_INTEL:
         return <MarketIntel />;
+      case Page.CATALOG:
+        return <Catalog onNavigate={handleNavigate} onSelectProduct={handleSelectProduct} />;
       default:
         return <Home onNavigate={handleNavigate} onSelectProduct={handleSelectProduct} />;
     }

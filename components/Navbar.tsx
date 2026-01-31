@@ -51,6 +51,7 @@ export const Navbar: React.FC<NavbarProps> = ({ activePage, onNavigate, cartCoun
         <div className="flex items-center gap-6">
           <nav className="hidden lg:flex items-center gap-6">
             <button className="text-white/80 hover:text-white text-sm font-medium transition-colors" onClick={() => onNavigate(Page.HOME)}>Browse</button>
+            <button className="text-white/80 hover:text-white text-sm font-medium transition-colors" onClick={() => onNavigate(Page.CATALOG)}>Catalog</button>
             <button className="text-white/80 hover:text-white text-sm font-medium transition-colors" onClick={() => onNavigate(Page.INVENTORY)}>Inventory</button>
             <button className="text-white/80 hover:text-white text-sm font-medium transition-colors flex items-center gap-1" onClick={() => onNavigate(Page.GENERATOR)}>
                <span className="material-symbols-outlined text-sm">auto_awesome</span> Create

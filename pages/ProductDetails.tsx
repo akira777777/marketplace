@@ -1,5 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Product, Page } from '../types';
+import { Rating } from '../components/Rating';
+import { ReviewComponent } from '../components/Review';
+import { ReviewForm } from '../components/ReviewForm';
+import { Image } from '../components/Image';
 
 interface ProductDetailsProps {
   product: Product;
@@ -23,7 +27,7 @@ export const ProductDetails: React.FC<ProductDetailsProps> = ({ product, onAddTo
         <div className="lg:col-span-7 space-y-6">
           <div className="relative bg-card-dark rounded-2xl border border-border-dark p-12 aspect-square flex items-center justify-center overflow-hidden group">
             <div className="absolute inset-0 bg-gradient-to-tr from-primary/5 to-transparent"></div>
-            <img 
+            <Image 
               alt={product.name} 
               className="relative z-10 w-full max-h-[80%] object-contain drop-shadow-[0_20px_50px_rgba(13,166,242,0.2)] group-hover:scale-110 transition-transform duration-700" 
               src={product.image} 
@@ -40,7 +44,7 @@ export const ProductDetails: React.FC<ProductDetailsProps> = ({ product, onAddTo
           <div className="flex gap-4 overflow-x-auto custom-scrollbar pb-2">
             {[1, 2, 3, 4].map((i) => (
               <button key={i} className={`min-w-[120px] aspect-square bg-card-dark rounded-xl border ${i === 1 ? 'border-2 border-primary' : 'border-border-dark hover:border-primary/50'} p-4 flex items-center justify-center transition-all`}>
-                <img className={`w-full h-full object-contain ${i !== 1 && 'opacity-60'}`} src={product.image} alt="Thumbnail" />
+                <Image className={`w-full h-full object-contain ${i !== 1 && 'opacity-60'}`} src={product.image} alt="Thumbnail" />
               </button>
             ))}
           </div>
@@ -148,7 +152,12 @@ export const ProductDetails: React.FC<ProductDetailsProps> = ({ product, onAddTo
         <div className="flex gap-12 border-b border-border-dark mb-8">
             <button className="pb-4 text-primary font-bold border-b-2 border-primary text-lg">Description</button>
             <button className="pb-4 text-white/50 hover:text-white font-bold transition-colors text-lg">Price History</button>
-            <button className="pb-4 text-white/50 hover:text-white font-bold transition-colors text-lg">Comments (24)</button>
+            <button className="pb-4 text-white/50 hover:text-white font-bold transition-colors text-lg flex items-center gap-2">
+              Reviews 
+              <span className="bg-primary/20 text-primary text-xs font-bold px-2 py-0.5 rounded-full">
+                {product.totalReviews || 0}
+              </span>
+            </button>
         </div>
         <div className="max-w-3xl space-y-6">
             <p className="text-white/70 leading-relaxed">
@@ -168,6 +177,39 @@ export const ProductDetails: React.FC<ProductDetailsProps> = ({ product, onAddTo
                  <span>Market security guarantee included</span>
                </li>
              </ul>
+        </div>
+      </section>
+
+      {/* Reviews Section */}
+      <section className="mt-16">
+        <div className="flex items-center justify-between mb-8">
+          <div>
+            <h2 className="text-white text-2xl font-bold mb-2">Customer Reviews</h2>
+            <div className="flex items-center gap-4">
+              <Rating rating={product.averageRating || 0} totalReviews={product.totalReviews} size="lg" />
+            </div>
+          </div>
+          <button 
+            onClick={() => {}}
+            className="bg-primary text-white px-6 py-3 rounded-lg font-bold hover:bg-primary/90 transition-colors"
+          >
+            Write a Review
+          </button>
+        </div>
+
+        {/* Reviews List */}
+        <div className="space-y-6">
+          {product.reviews && product.reviews.length > 0 ? (
+            product.reviews.map(review => (
+              <ReviewComponent key={review.id} review={review} />
+            ))
+          ) : (
+            <div className="text-center py-12 bg-[#182b34] rounded-2xl border border-[#315668]">
+              <span className="material-symbols-outlined text-6xl text-white/30 mb-4">chat</span>
+              <h3 className="text-white text-xl font-bold mb-2">No reviews yet</h3>
+              <p className="text-white/60">Be the first to review this item!</p>
+            </div>
+          )}
         </div>
       </section>
     </main>

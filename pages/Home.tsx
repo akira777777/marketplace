@@ -28,16 +28,15 @@ export const Home: React.FC<HomeProps> = ({ onNavigate, onSelectProduct }) => {
             </p>
             <div className="flex items-center gap-4 mt-4">
               <button 
-                onClick={() => {
-                   const product = PRODUCTS.find(p => p.name.includes("Dragon Lore"));
-                   if (product) onSelectProduct(product);
-                }}
+                onClick={() => onNavigate(Page.CATALOG)}
                 className="flex items-center justify-center rounded-lg h-12 px-8 bg-primary text-white font-bold hover:brightness-110 shadow-[0_0_20px_rgba(13,166,242,0.4)] transition-all"
               >
                 Shop Now
               </button>
-              <button className="flex items-center justify-center rounded-lg h-12 px-8 bg-[#223c49] text-white font-bold hover:bg-[#2d4e5f] border border-white/10 transition-all">
-                View Deals
+              <button 
+                onClick={() => onNavigate(Page.CATALOG)}
+                className="flex items-center justify-center rounded-lg h-12 px-8 bg-[#223c49] text-white font-bold hover:bg-[#2d4e5f] border border-white/10 transition-all">
+                View All Items
               </button>
             </div>
           </div>
